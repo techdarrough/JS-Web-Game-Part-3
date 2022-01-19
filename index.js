@@ -8,19 +8,26 @@ function newImage(url, left, bottom){
     return image
 }
 
-function move(image, left, bottom){
+function move(image){
     image.style.position = 'fixed'
-    image.style.left = left + 'px'
-    image.style.bottom = bottom + 'px'
+    
+    function moveToCoordinates(left, bottom){
+        image.style.left = left + 'px'
+        image.style.bottom = bottom + 'px'
+    }
+
+    return {
+        to: moveToCoordinates
+    }
 }
 
-let greenCharater = newImage('assets/green-character.gif', 100, 250)
-let tree = newImage('assets/tree.png', 200, 450)
-let pillar = newImage('assets/pillar.png', 350, 250)
-let pineTree = newImage('assets/pine-tree.png', 450, 350)
-let crate = newImage('assets/crate.png', 150, 350)
-let well = newImage('assets/well.png', 500, 575)
-move(greenCharater, 100,250)
+move(newImage('assets/green-character.gif')).to(100, 250)
+newImage('assets/tree.png', 200, 450)
+newImage('assets/pillar.png', 350, 250)
+newImage('assets/pine-tree.png', 450, 350)
+newImage('assets/crate.png', 150, 350)
+newImage('assets/well.png', 500, 575)
+
 
 function newItem(url, left, bottom){
     let item = newImage(url, left, bottom)
